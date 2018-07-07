@@ -1,0 +1,70 @@
+
+<%= render 'shared/errors',obj: @user %>
+
+<div class = 'container-fluid'>
+
+  <div class = 'col-xs-10'>
+
+    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |n| %>
+      <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :'User Name' %> 
+        </div>
+        <div class="col-sm-4">
+          <%= n.text_field :username, :autocomplete => :off, class: "form-control", disabled: true  %>
+        </div>
+     
+      </div> 
+
+    
+
+
+      <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :Admin %> 
+        </div>
+        <div class="col-sm-4">
+        <%= n.select :useradmin, ['true','false'], {prompt: "Please Select"}, {class: "form-control"} %>
+        </div>
+      </div>
+
+
+
+
+
+      <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :password %> 
+        </div>
+        <div class="col-sm-4">
+          <%= n.password_field :password, :autocomplete => :off, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class = "form-group">
+        <div class = "col-sm-offset-1 col-sm-8">
+          <%= n.submit  class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+      
+
+      </div>
+   
+
+
+    </div>
+
+
+
+    <% end %>
+    
+
+
+
+
+
+  </div>
+
+</div>
+</div>

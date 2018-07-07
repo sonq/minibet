@@ -6,7 +6,12 @@
 <div class = "container-fluid">
 <div class = "center jumbotron">
 
-  
+  <% if logged_in? %> 
+
+
+<% else %>
+<%= link_to "Sign Up", signup_path, class: "btn btn-primary btn-lg btn-xlarge"%> 
+<% end %>
 
 
 </div>

@@ -1,0 +1,52 @@
+
+<div class= "container-fluid">
+<h1> Users </h1> </div>
+</div>
+
+
+<div align = "center">
+  <%= will_paginate %>
+</div>
+
+<div align = "center">
+
+<table class="table table-striped">
+
+  <tr>
+
+    <th>User Name   </th>
+
+ 
+  
+    <th>  </th>
+  </tr>
+
+
+  <% @users.each do |user| %>
+  <tr>
+
+    <td><%= user.username %> </td>
+
+    <td>
+      <% if current_user == user || current_user.useradmin?  %>
+      <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
+
+
+      <% end %> 
+    </td>
+
+
+
+
+
+  </tr>
+  <% end %>
+
+
+</table>
+
+</div>
+
+<div align = "center">
+  <%= will_paginate %>
+</div>

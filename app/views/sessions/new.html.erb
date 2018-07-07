@@ -1,0 +1,35 @@
+<h1 align = 'center'> Log in </h1>
+
+</br>
+
+
+<%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url:login_path) do |n| %>
+      <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label "User Name" %> 
+        </div>
+        <div class="col-sm-4">
+          <%= n.text_field :username, class: "form-control", placeholder: "User Name", autofocus: true %>
+        </div>
+     
+
+
+ </div> 
+
+          <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :password %> 
+        </div>
+        <div class="col-sm-4">
+          <%= n.password_field :password, class: "form-control", autocomplete: "off", autofocus: true %>
+        </div>
+      </div>
+
+
+      <div class = "form-group">
+        <div class = "col-sm-offset-1 col-sm-8">
+          <%= n.submit "Log in" , class: 'btn btn-primary' %>
+        </div>
+      </div>
+
+<% end %>
