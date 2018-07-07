@@ -1,0 +1,50 @@
+
+
+<div class = 'container-fluid'>
+<h1> Show </h1>
+
+<%= render 'shared/errors',obj: @fixture %>
+
+
+  <div class = 'col-xs-10'>
+
+
+    <%= form_for(@fixture, :html => {class: "form-horizontal", role: "form"}) do |n| %>
+
+
+          <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :'Match Name' %> 
+        </div>
+        <div class="col-sm-4">
+          <%= n.text_field :description, class: "form-control", placeholder: "Description", autofocus: true %>
+      </div>
+      </div>
+      
+
+
+
+      <div class = "form-group">
+        <div class = "control-label col-sm-2">
+          <%= n.label :'Due Date' %> 
+      </div>
+      
+        <div class = "col-sm-4">
+          <%= n.datetime_field :due, class: "form-control",  placeholder: "Due Date", autofocus: true %>
+      </div>
+  </div>
+        <div class = "col-sm-offset-0 col-sm-8">
+          <%= n.submit class: 'btn btn-primary' %>
+        </div>
+
+  <div class = "col-sm-offset-0 col-sm-8">
+     </br>
+    <%= link_to "Return to the fixture list", fixtures_path %></p>
+  </div>
+    
+    <%end%>
+
+
+
+</div>
+</div>

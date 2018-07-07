@@ -1,0 +1,223 @@
+$navbar-default-bg: white;
+
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    background-color: #f7f8f9;
+}
+
+#logo {
+  
+  fload: left;
+  font-size: 25px;
+  color:  #428bca;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: 'Shadows Into Light';
+}
+
+
+
+
+#navlink {
+  color: light grey;
+  font-family: 'Poppins';
+  font-size: 15px;
+
+
+}
+
+#content {
+  font-family: 'Roboto';
+  font-weight: medium;
+  font-size : 16px;
+}
+
+
+#header {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size : 31px;
+}
+
+#header2 {
+  font-family: 'Roboto';
+  font-weight: bold;
+  font-size : 25px;
+}
+
+
+#pagleft5 {
+  margin: -30px;
+  padding-left: 280px;
+  
+}
+
+#pagleft4 {
+  margin: 5px;
+  padding-left: 20px;
+  
+}
+
+
+#pagleft3 {
+  margin: -15px;
+  padding-left: 20px;
+  
+}
+
+
+#addline {
+  
+  padding-left: 10px;
+  
+}
+
+
+
+#marginright5 {
+  padding-left: 45px;
+}
+
+#removeline {
+  margin: -15px;
+  padding-left: 605px;
+  align: center;
+  
+}
+
+
+#smline {
+  width: 55px;
+  height: 30px;
+  
+}
+
+
+#mdline {
+  width: 125px;
+  height: 30px;
+  
+}
+
+
+
+#lgline {
+  width: 305px;
+  height: 30px;
+  
+}
+
+
+
+
+
+#navlinklogout {
+  color: light grey;
+  font-family: 'Poppins';
+  font-size: 15px; 
+
+
+}
+
+
+#navlink:hover {
+  color: white;
+  font-family: 'Poppins';
+  background-color: #428bca;
+
+}
+
+#navlinklogout:hover {
+  color: white;
+  font-family: 'Poppins';
+  background-color: #d9534f;
+
+}
+
+
+#logo:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+#imageright {
+  float: right;
+  margin-right: 15px;
+  width: 200px;
+  height: 500px;
+}
+
+
+.center {
+  text-align: center;
+}
+
+
+.jumbotron {
+  
+  background-image: asset-url('jumbotron.jpg');
+  background-size:  cover;
+  height: 820px;
+  width: 100%;
+
+
+}
+
+
+
+
+.jumbotron h1 {
+  color:  white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold; }
+
+
+.homebanner {
+  
+  background-image: asset-url('home.jpg');
+  background-size:  cover;
+  height: 600px;
+
+
+}
+
+.homebanner h1 {
+  color:  white;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold; }
+
+
+footer {
+  
+  margin-top: 210px;
+  border-top: 1px solid #eaeaea;
+  color:#777;
+}
+
+footer a:hover {
+  color: #222;
+}
+
+
+footer small {
+  float:left;
+}
+
+
+footer p {
+  float:right;
+  list-style: none
+}
+
+navbar-nav .nav-link{
+  color: red;
+
+}
+

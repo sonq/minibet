@@ -1,0 +1,61 @@
+
+<div class = "col-sm-offset-0 col-sm-8">
+<br/><br/>
+<%= link_to "Add Match",new_fixture_path, class: "btn btn-primary"%> 
+</div>
+
+
+<div class = "col-sm-offset-0 col-sm-12">
+</br>
+<table class= 'table table-striped'>
+
+  <tr>
+    
+    <th>Fixture Code</th>
+    <th>Match</th>
+    <th>Result</th>
+    <th>Home Score</th>
+    <th>Away Score</th>
+    <th>Due Date</th>
+    <th> </th>
+    <th> </th>
+    <th> </th>   
+    <th> </th>
+    
+  
+  </tr>
+
+    <% @fixtures.each do |fixture| %>
+    <tr>
+    <td><%= fixture.id %> </td>
+    <td><%= fixture.description %> </td>
+
+    <td><%= fixture.result %> </td>
+    <td><%= fixture.homescore  %> </td>
+    <td><%= fixture.awayscore %> </td>
+    <td><%= fixture.due%>+3 </td> 
+
+    <td>
+        <% if fixture.result.nil? %>
+             <%= link_to "Bet", "#" ,class: 'btn btn-sm btn-primary'%>
+        <%else %>
+
+        <%end%>
+         
+
+     </td>
+    <td><%= link_to 'Update', edit_fixture_path(fixture), class: 'btn btn-sm btn-primary' %> </td>
+    <td> <%= link_to 'Delete', fixture_path(fixture), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %> </td>
+    
+
+
+
+
+
+ 
+ 
+
+        <%end%>
+
+
+</div>
