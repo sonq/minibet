@@ -7,7 +7,9 @@
 <div class = 'center'>
   <%= will_paginate @user_bets %>
 </div>
-<%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+
+<%= 
+DateTime.now.strftime("%Y-%m-%d %H:%M:%S")  %>
 
 <div class = "col-sm-offset-0 col-sm-12">
 </br>
