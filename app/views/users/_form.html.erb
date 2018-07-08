@@ -18,7 +18,7 @@
 
     
 
-      <% if current_user.useradmin == 'true'  %> 
+     
       <div class = "form-group">
         <div class = "control-label col-sm-2">
           <%= n.label :Admin %> 
@@ -27,8 +27,6 @@
         <%= n.select :useradmin, ['true','false'], {prompt: "Please Select"}, {class: "form-control"} %>
         </div>
       </div>
-      <% else %>
-      <% end %>
 
 
 
