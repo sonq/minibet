@@ -45,11 +45,12 @@
 
      </td>
     <td>
-        <% if current_user.useradmin?  %> 
+        <% if current_user.useradmin == 'true'  %> 
         <%= link_to 'Update', edit_fixture_path(fixture), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>
-    <td><% if current_user.useradmin?  %>  
+        
+    <td><% if current_user.useradmin == 'true'  %>  
         <%= link_to 'Delete', fixture_path(fixture), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
         <%else%>
         <%end%>

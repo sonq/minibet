@@ -1,5 +1,5 @@
 class FixturesController < ApplicationController
-
+before_action :require_user
 
   def new
     @fixture = Fixture.new
@@ -77,5 +77,7 @@ class FixturesController < ApplicationController
   def fixture_params
     params.require(:fixture).permit(:hometeam,:awayteam,:due, :homescore, :awayscore, :result,:description)
   end
+
+  
 
 end

@@ -28,7 +28,7 @@
     <td><%= user.username %> </td>
 
     <td>
-      <% if current_user == user || current_user.useradmin?  %>
+      <% if current_user == user || current_user.useradmin == 'true'  %>
       <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
 
 
