@@ -4,6 +4,10 @@
 <%= link_to "Add Match",new_fixture_path, class: "btn btn-primary"%> 
 </div>
 
+<div class = 'center'>
+  <%= will_paginate @user_bets %>
+</div>
+
 
 <div class = "col-sm-offset-0 col-sm-12">
 </br>
@@ -11,7 +15,7 @@
 
   <tr>
     
-    <th>Fixture Code</th>
+
     <th>Match</th>
     <th>Result</th>
     <th>Home Score</th>
@@ -27,7 +31,7 @@
 
     <% @fixtures.each do |fixture| %>
     <tr>
-    <td><%= fixture.id %> </td>
+
     <td><%= fixture.description %> </td>
 
     <td><%= fixture.result %> </td>
@@ -37,7 +41,7 @@
 
     <td>
         <% if fixture.result.nil? %>
-             <%= link_to "Bet", "#" ,class: 'btn btn-sm btn-primary'%>
+             <%= link_to "Bet", new_fixture_bet_path(fixture_id: fixture.id) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
@@ -46,7 +50,7 @@
      </td>
     <td>
         <% if current_user.useradmin == 'true'  %> 
-        <%= link_to 'Update', edit_fixture_path(fixture), class: 'btn btn-sm btn-primary' %>
+        <%= link_to 'Update', edit_fixture_path(fixture.id), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>
         

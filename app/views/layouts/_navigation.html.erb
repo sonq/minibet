@@ -33,12 +33,13 @@
 
 
 
- <!--
-      <li><%= link_to "Bet", "#" , id: "navlink"%></li>
+      <li>
+    <%= link_to "Active Bets", bets_path, id: "navlink"%></li>
 
--->
+   <li>
+    <%= link_to "Leader Board", users_path, id: "navlink"%></li>
 
-     <li><%= link_to "Results", "#", id: "navlink"%></li> 
+     
 
 
 
@@ -69,7 +70,7 @@
 
 
 
-            <li><%= link_to "Users", users_path, id: "navlink"%></li>
+         
 
             <li><%= link_to "Log out", logout_path, id: "navlinklogout", method: :delete %></li>
 

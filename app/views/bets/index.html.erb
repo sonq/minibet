@@ -1,0 +1,71 @@
+
+<div class = "col-sm-offset-0 col-sm-8">
+<br/><br/>
+
+</div>
+
+<div class = 'center'>
+  <%= will_paginate @user_bets %>
+</div>
+<%= Time.now.strftime("%d/%m/%Y %H:%M") %>
+
+<div class = "col-sm-offset-0 col-sm-12">
+</br>
+<table class= 'table table-striped'>
+
+  <tr>
+    
+
+    <th>Match</th>
+    <th>Result</th>
+    <th>Home Score</th>
+    <th>Away Score</th>
+    <th>Due Date</th>
+    <th> </th>
+    <th> </th>
+    <th> </th>   
+    <th> </th>
+    
+  
+  </tr>
+
+    <% @bets.each do |bet| %>
+    <tr>
+
+    <td><%= bet.fixture.description %> </td>
+
+    <td><%= bet.result %> </td>
+    <td><%= bet.homescore  %> </td>
+    <td><%= bet.awayscore %> </td>
+    <td><%= bet.fixture.due%>+3 </td> 
+
+    <td>
+        <% if bet.result.nil? %>
+             <%= link_to "Bet", "#" ,class: 'btn btn-sm btn-primary'%>
+        <%else %>
+
+        <%end%>
+         
+
+     </td>
+    <td>
+        <% if current_user.useradmin == 'true'  %> 
+        <%= link_to 'Update', edit_bet_path(bet), class: 'btn btn-sm btn-primary' %>
+        <%else%>
+        <%end%> </td>
+        
+    <td>
+    </td>
+    
+
+
+
+
+
+ 
+ 
+
+        <%end%>
+
+
+</div>

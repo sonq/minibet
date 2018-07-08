@@ -8,15 +8,34 @@
   <%= will_paginate %>
 </div>
 
-<div align = "center">
+<div class = "col-sm-offset-0 col-sm-12">
 
 <table class="table table-striped">
 
   <tr>
 
-    <th>User Name   </th>
+    <th> User Name </th>
+    <th> Total Point </th>
 
- 
+    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
   
     <th>  </th>
   </tr>
@@ -27,15 +46,28 @@
 
     <td><%= user.username %> </td>
 
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+
     <td>
       <% if current_user == user || current_user.useradmin == 'true'  %>
-      <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
-
-
+      <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
       <% end %> 
     </td>
-
-
 
 
 

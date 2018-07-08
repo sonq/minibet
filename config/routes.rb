@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     get 'home',to: 'taqtaqbet#home'
     get 'about', to: 'taqtaqbet#about'
 
-    resources :fixtures
+    resources :fixtures do
+        resources :bets
+    end
+
+
+
+    resources :bets
 
     get 'signup', to: 'users#new'
     resources :users, except: [:new]

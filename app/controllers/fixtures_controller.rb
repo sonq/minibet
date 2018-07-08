@@ -1,5 +1,6 @@
 class FixturesController < ApplicationController
-before_action :require_user
+  before_action :require_user
+  #before_action :require_admin
 
   def new
     @fixture = Fixture.new
@@ -37,7 +38,7 @@ before_action :require_user
 
 
   def index
-    @fixtures = Fixture.order('due DESC')
+    @fixtures = Fixture.order('due DESC').paginate(page: params[:page], per_page: 20)
   end
 
 
@@ -77,6 +78,15 @@ before_action :require_user
   def fixture_params
     params.require(:fixture).permit(:hometeam,:awayteam,:due, :homescore, :awayscore, :result,:description)
   end
+
+      #def require_admin
+      #if !current_user.useradmin = 'true'
+      #  flash[:danger] = "You can only edit or delete your own records."
+      #  redirect_to fixtures_path
+     # end
+   # end
+
+
 
   
 
