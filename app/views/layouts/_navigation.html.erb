@@ -11,7 +11,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <%= link_to "TaqTaq Bet Zone", home_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "TaqTaq", home_path, class: "navbar-brand", id: "logo" %>
 
 
 
@@ -34,10 +34,10 @@
 
 
       <li>
-    <%= link_to "Active Bets", bets_path, id: "navlink"%></li>
+    <%= link_to "Bets", bets_path, id: "navlink"%></li>
 
    <li>
-    <%= link_to "Leader Board", users_path, id: "navlink"%></li>
+    <%= link_to "Leader Board", tabelas_path, id: "navlink"%></li>
 
      
 
@@ -64,13 +64,21 @@
 
       <ul class="nav navbar-nav navbar-right">
         
+<li>
+<% if logged_in? && current_user.adminflag? %>
+     <%= link_to "Users", users_path, id: "navlink"%></li>
+<% else %>
+
+<% end %>
+
 
 <% if logged_in? %> 
            
 
 
 
-         
+          <li>
+    <%= link_to "Account", user_path(current_user), id: "navlink"%></li>
 
             <li><%= link_to "Log out", logout_path, id: "navlinklogout", method: :delete %></li>
 

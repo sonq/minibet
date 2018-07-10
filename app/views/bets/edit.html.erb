@@ -12,11 +12,9 @@
     <%= form_for(@bet, :html => {class: "form-horizontal", role: "form"}) do |n| %>
       
       <div class = "form-group">
-        <div class = "control-label col-sm-2">
-          <%= n.label :'Match ID' %> 
-        </div>
+
         <div class="col-sm-4">
-          <%= n.text_field :fixture_id, class: "form-control", placeholder: "Match ID", autofocus: true %>
+          <%= n.hidden_field :fixture_id, class: "form-control", placeholder: "Match ID", autofocus: true %>
       </div>
       </div>
 

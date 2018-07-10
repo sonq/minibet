@@ -60,12 +60,12 @@
     </td>
 
     <td>
-        <% if current_user.useradmin == 'true'  %> 
+        <% if current_user.adminflag?  %> 
         <%= link_to 'Update', edit_fixture_path(fixture.id), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>
         
-    <td><% if current_user.useradmin == 'true'  %>  
+    <td><% if current_user.username == 'soner'  %>  
         <%= link_to 'Delete', fixture_path(fixture), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
         <%else%>
         <%end%>

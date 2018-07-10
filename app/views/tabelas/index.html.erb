@@ -6,9 +6,6 @@
 
 
 
-<div align = "center">
-  <%= will_paginate %>
-</div>
 
 <div class = "col-sm-offset-0 col-sm-12">
 
@@ -43,12 +40,12 @@
   </tr>
 
 
-  <% @users.each do |user| %>
+  <% @tabelas.each do |tabela| %>
   <tr>
 
-    <td><%= user.username %> </td>
+    <td><%= tabela.betuser %> </td>
 
-    <td> </td>
+    <td><%= tabela.sum %> </td>
     <td> </td>    
     <td> </td>
     <td> </td>
@@ -65,11 +62,7 @@
     <td> </td>
     <td> </td>
 
-    <td>
-      <% if current_user == user || current_user.useradmin?  %>
-      <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
-      <% end %> 
-    </td>
+
 
 
 
@@ -81,6 +74,3 @@
 
 </div>
 
-<div align = "center">
-  <%= will_paginate %>
-</div>

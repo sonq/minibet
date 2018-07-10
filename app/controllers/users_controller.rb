@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:edit, :update,:show]
-  before_action :require_user
+  #before_action :require_user
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
 
@@ -97,6 +97,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     end
   end
+
 
   
 
