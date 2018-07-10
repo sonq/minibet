@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+    before_action :set_user, only: [:edit, :update,:show]
+  before_action :require_user
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  before_action :set_user, only: [:edit, :update,:show]
+
 
 
   def new
@@ -17,37 +20,34 @@ class UsersController < ApplicationController
   end
 
 
+
   def edit
 
-    
+      @user = User.find(params[:id])  
 
   end
-
-
-  
 
 
   def update
-
-  
-
+    @user = User.find(params[:id])
     if @user.update(user_params)
-
-      flash[:success] = "Your account is updated successfully" 
+      flash[:success] = "Account is updated successfully" 
       redirect_to users_path
 
-    else
+      else
       render 'edit'
     end
-
-
-
   end
+  
+
+
+
+  
 
   def show
 
 
- 
+ @user = User.find(params[:id])
 
   end
 
@@ -83,15 +83,16 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username,:usertype, :useradmin, :password)
+    params.require(:user).permit(:username,:usertype, :useradmin, :password, :adminflag)
   end
 
   def set_user
     @user = User.find(params[:id])
   end
 
+
   def require_same_user 
-    if current_user != @user and !current_user.useradmin?
+    if current_user != @user and !current_user.adminflag?
       flash[:danger] = "You can edit only your own account"
       redirect_to users_path
     end

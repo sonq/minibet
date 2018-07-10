@@ -1,6 +1,8 @@
 class FixturesController < ApplicationController
+
   before_action :require_user
-  #before_action :require_admin
+    before_action :require_same_user, only: [:edit, :update, :destroy]
+
 
   def new
     @fixture = Fixture.new
@@ -79,13 +81,13 @@ class FixturesController < ApplicationController
     params.require(:fixture).permit(:hometeam,:awayteam,:due, :homescore, :awayscore, :result,:description)
   end
 
-      #def require_admin
-      #if !current_user.useradmin = 'true'
-      #  flash[:danger] = "You can only edit or delete your own records."
-      #  redirect_to fixtures_path
-     # end
-   # end
 
+  def require_same_user 
+    if !current_user.adminflag?
+      flash[:danger] = "Cakaaaaallll"
+      redirect_to fixtures_path
+    end
+  end
 
 
   

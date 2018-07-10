@@ -21,7 +21,7 @@
     <th>Home Score</th>
     <th>Away Score</th>
     <th>Due Date</th>
-    <th> </th>
+    <th>Created By</th>
     <th> </th>
     <th> </th>   
     <th> </th>
@@ -33,11 +33,11 @@
     <tr>
 
     <td><%= bet.fixture.description %> </td>
-
     <td><%= bet.result %> </td>
     <td><%= bet.homescore  %> </td>
     <td><%= bet.awayscore %> </td>
     <td><%= bet.fixture.due%>+3 </td> 
+    <td><%= bet.user.username%> </td>
 
     <td>
         <% if bet.result.nil? %>
@@ -55,6 +55,11 @@
         <%end%> </td>
         
     <td>
+            <td><% if current_user.useradmin == 'true'  %>  
+        <%= link_to 'Delete', bet_path(bet), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
+        <%else%>
+        <%end%>
+    </td>
     </td>
     
 

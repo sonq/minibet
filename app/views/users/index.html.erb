@@ -46,7 +46,7 @@
 
     <td><%= user.username %> </td>
 
-    <td> </td>
+    <td> <% if user.bets.betresult == bet.fixture.result %> <%=user.bets.count*1 %> <%end%></td>
     <td> </td>    
     <td> </td>
     <td> </td>

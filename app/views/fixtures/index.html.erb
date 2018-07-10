@@ -17,6 +17,7 @@
     
 
     <th>Match</th>
+    <th># of Bets </th>
     <th>Result</th>
     <th>Home Score</th>
     <th>Away Score</th>
@@ -33,7 +34,7 @@
     <tr>
 
     <td><%= fixture.description %> </td>
-
+    <td><%= fixture.bets.count %> </td>
     <td><%= fixture.result %> </td>
     <td><%= fixture.homescore  %> </td>
     <td><%= fixture.awayscore %> </td>
@@ -41,13 +42,23 @@
 
     <td>
         <% if fixture.result.nil? %>
-             <%= link_to "Bet", new_fixture_bet_path(fixture_id: fixture.id) , class: 'btn btn-sm btn-primary'%>
+             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
          
 
      </td>
+
+    <td>
+        <% if fixture.result.nil? %>
+             <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description) , class: 'btn btn-sm btn-primary'%>
+        <%else %>
+
+        <%end%>
+
+    </td>
+
     <td>
         <% if current_user.useradmin == 'true'  %> 
         <%= link_to 'Update', edit_fixture_path(fixture.id), class: 'btn btn-sm btn-primary' %>

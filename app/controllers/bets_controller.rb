@@ -1,8 +1,9 @@
 
 class BetsController < ApplicationController 
 
-  before_action :require_user
 
+  before_action :require_user
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
 
 
@@ -26,6 +27,14 @@ class BetsController < ApplicationController
 
   end
 
+    def destroy
+
+      @bet = Bet.find(params[:id])
+      @bet.destroy
+      flash[:danger] = "Bet has been deleted."
+      redirect_to bets_path
+
+   end
 
 
   def create
@@ -85,6 +94,16 @@ class BetsController < ApplicationController
       params.require(:bet).permit(:bettype,:homescore,:awayscore,:result, :fixture_id)
     end 
 
+
+
+
+
+  def require_same_user 
+    if  !current_user.adminflag?
+      flash[:danger] = "Cakaaaaaalllll"
+      redirect_to bets_path
+    end
+  end
 
 
 
