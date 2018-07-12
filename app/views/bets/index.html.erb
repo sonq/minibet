@@ -55,7 +55,7 @@
         <%end%> </td>
         
     <td>
-            <td><% if current_user.useradmin == 'true'  %>  
+            <td><% if current_user.useradmin?  %>  
         <%= link_to 'Delete', bet_path(bet), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
         <%else%>
         <%end%>
