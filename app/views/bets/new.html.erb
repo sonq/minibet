@@ -30,7 +30,7 @@
       </div>
     </div>
 
-
+    <% if params[:bettype] == 'Result' %>
       <div class = "form-group">
         <div class = "control-label col-sm-2">
           <%= n.label :Result %> 
@@ -39,6 +39,8 @@
         <%= n.select :result, [0,1,2], {prompt: "Please Select"}, {class: "form-control"} %>
         </div>
       </div>
+      <br/>
+    <%end%>
 
 
 
@@ -63,7 +65,7 @@
           <%= n.text_field :awayscore, class: "form-control", placeholder: "Away Score", autofocus: true %>
       </div>
       </div>
-
+      <br/>
       <% else %>
       <% end %>
 

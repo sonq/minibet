@@ -6,10 +6,10 @@
 
 <div class = 'center'>
   <%= will_paginate @user_bets %>
-  <%= Time.now.strftime("%Y-%d-%m %H:%M:%S")%>
-
+ 
+  <br/>
+  <kbd>Current Time: <%= Time.now.strftime("%Y-%d-%m %H:%M:%S")  %></kbd>
 </div>
-
 
 <div class = "col-sm-offset-0 col-sm-12">
 </br>
@@ -40,11 +40,20 @@
     <td><%= fixture.result %> </td>
     <td><%= fixture.homescore  %> </td>
     <td><%= fixture.awayscore %> </td>
-    <td><%= fixture.due%>+3 </td> 
+    
+    <td>
+        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+        <p class="text-primary">
+        <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
+        <% else %>
+        <p class="text-danger">
+        <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
+        <% end %>
+        </td> 
 
     <td>
-        <% if fixture.result.nil? %>
-             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description) , class: 'btn btn-sm btn-primary'%>
+        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
@@ -53,8 +62,8 @@
      </td>
 
     <td>
-        <% if fixture.result.nil? %>
-             <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description) , class: 'btn btn-sm btn-primary'%>
+        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+             <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
@@ -81,7 +90,7 @@
  
  
 
-        <%end%>
 
+<%end%>
 
 </div>

@@ -3,9 +3,7 @@ class BetsController < ApplicationController
 
 
   before_action :require_user
-    before_action :require_same_user, only: [:edit, :update, :destroy]
-
-
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
 
   def new
@@ -39,18 +37,17 @@ class BetsController < ApplicationController
 
   def create
     @bet = Bet.new(bet_params)
-    
-
-
-
     @bet.user = current_user
     
-    if @bet.save
-      flash[:success] = "Bet has been created!"
-      redirect_to bets_path
-    else
-      render 'new'
-    end
+
+
+        if @bet.save 
+          flash[:success] = "Bet has been created!"
+          redirect_to bets_path
+        else
+          flash[:danger] = "Try again!"
+          redirect_to fixtures_path
+        end
 
   end
 
@@ -101,7 +98,7 @@ class BetsController < ApplicationController
   def require_same_user 
     if  !current_user.adminflag?
       flash[:danger] = "Cakaaaaaalllll"
-      redirect_to bets_path
+      redirect_to fixtures_path
     end
   end
 
