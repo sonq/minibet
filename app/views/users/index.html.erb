@@ -66,12 +66,13 @@
     <td> </td>
 
     <td>
-      <% if current_user == user || current_user.useradmin?  %>
+      <% if current_user == user || current_user.useradminflag?  %>
       <%= link_to 'Edit Profile', edit_user_path(user), class: 'btn btn-sm btn-primary' %>
       <% end %> 
     </td>
 
-
+    <% if current_user.username == 'Soner'  %>  
+        <%= link_to 'Delete', user_path(user), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
 
   </tr>
   <% end %>

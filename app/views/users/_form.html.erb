@@ -19,7 +19,7 @@
 
     
 
-  
+      <% if current_user.adminflag? %> 
               <div class = "form-group">
         <div class = "control-label col-sm-2">
           <%= n.label :Admin %> 
@@ -28,7 +28,7 @@
         <%= n.select :adminflag, ['true','false'], {prompt: "Please Select"}, {class: "form-control"} %>
         </div>
       </div>
-    <% if current_user.adminflag? %> 
+
       <% else %>
       <% end %>
 
