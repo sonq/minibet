@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180710112602) do
+ActiveRecord::Schema.define(version: 20180713112433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20180710112602) do
               fixtures.homescore,
               fixtures.awayscore,
                   CASE
-                      WHEN (((bets.bettype)::text = 'Score'::text) AND ((bets.bettype)::text <> 'Result'::text) AND (bets.homescore = fixtures.homescore) AND (bets.awayscore = fixtures.awayscore)) THEN 3
-                      WHEN (((bets.bettype)::text = 'Result'::text) AND ((bets.bettype)::text <> 'Score'::text) AND (bets.result = fixtures.result)) THEN 1
+                      WHEN (((bets.bettype)::text = 'Score'::text) AND ((bets.bettype)::text <> 'Result'::text) AND (bets.homescore = fixtures.homescore) AND (bets.awayscore = fixtures.awayscore)) THEN 5
+                      WHEN (((bets.bettype)::text = 'Result'::text) AND ((bets.bettype)::text <> 'Score'::text) AND (bets.result = fixtures.result)) THEN 2
                       ELSE 0
                   END AS points
              FROM ((bets
