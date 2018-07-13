@@ -36,13 +36,15 @@ class BetsController < ApplicationController
 
 
   def create
+
+
     @bet = Bet.new(bet_params)
     @bet.user = current_user
     
 
 
         if @bet.save 
-          flash[:success] = "Bet has been created!"
+          flash[:success] = "Bet has been created!" 
           redirect_to bets_path
         else
           flash[:danger] = "Try again!"
@@ -101,6 +103,8 @@ class BetsController < ApplicationController
       redirect_to fixtures_path
     end
   end
+
+
 
 
 

@@ -40,11 +40,7 @@
     <td><%= bet.user.username%> </td>
 
     <td>
-        <% if bet.result.nil? %>
-             <%= link_to "Bet", "#" ,class: 'btn btn-sm btn-primary'%>
-        <%else %>
 
-        <%end%>
          
 
      </td>
@@ -55,7 +51,7 @@
         <%end%> </td>
         
     <td>
-            <td><% if current_user.useradmin?  %>  
+            <td><% if current_user.adminflag?  %>  
         <%= link_to 'Delete', bet_path(bet), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
         <%else%>
         <%end%>

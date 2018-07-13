@@ -1,8 +1,14 @@
 
+
+
+
 <div class = "col-sm-offset-0 col-sm-8">
 <br/><br/>
+<% if current_user.adminflag? %> 
 <%= link_to "Add Match",new_fixture_path, class: "btn btn-primary"%> 
+<% end %>
 </div>
+
 
 <div class = 'center'>
   <%= will_paginate @user_bets %>
@@ -25,22 +31,23 @@
     <th>Away Score</th>
     <th>Due Date</th>
     <th> </th>
-    <th> </th>
-    <th> </th>   
-    <th> </th>
+    <th> </th>      <th> </th>
+    <th> </th>   <th> </th>
     
   
   </tr>
+    <% user = current_user.id %>
+
+
 
     <% @fixtures.each do |fixture| %>
-    <tr>
-
+    <tr>      
     <td><%= fixture.description %> </td>
     <td><%= fixture.bets.count %> </td>
     <td><%= fixture.result %> </td>
     <td><%= fixture.homescore  %> </td>
     <td><%= fixture.awayscore %> </td>
-    
+
     <td>
         <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
         <p class="text-primary">
@@ -50,9 +57,12 @@
         <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
         <% end %>
         </td> 
+        <td> 
+        </td>
 
     <td>
-        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") &&  
+            (fixture.bets.where(:user_id => user).count) == 0 %>
              <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
@@ -62,7 +72,8 @@
      </td>
 
     <td>
-        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") &&  
+            (fixture.bets.where(:user_id => user).count) == 0 %>
              <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 

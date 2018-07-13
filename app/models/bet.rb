@@ -6,4 +6,7 @@ class Bet < ActiveRecord::Base
    validates :user_id, presence: true
    validates :result, presence: false
 
+
+
+
 end
