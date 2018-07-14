@@ -71,8 +71,8 @@ class UsersController < ApplicationController
     if @user.save
       #session automatically signs users in that signed up after submittin in sign up page
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to the fiturbate #{@user.username}"
-      redirect_to user_path(@user)
+      flash[:success] = "Welcome to the TaqTaq #{@user.username}"
+      redirect_to home_path
     else
 
       render 'new'
