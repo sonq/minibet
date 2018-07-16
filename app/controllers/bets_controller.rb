@@ -47,7 +47,7 @@ class BetsController < ApplicationController
           flash[:success] = "Bet has been created!" 
           redirect_to fixtures_path
         else
-          flash[:danger] = "Try again!"
+          flash[:danger] = "Cakaaaaaalllll"
           redirect_to fixtures_path
         end
 
