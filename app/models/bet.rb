@@ -5,6 +5,7 @@ class Bet < ActiveRecord::Base
    validates  :fixture_id, presence: true
    validates  :user_id, presence: true
    validates  :result, presence: false
+   validates_uniqueness_of :user_id, :scope => :fixture_id
 
 
 
