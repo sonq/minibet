@@ -64,7 +64,7 @@
     <td>
         <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") &&  
             (fixture.bets.where(:user_id => user).count) == 0 %>
-             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M"), user_id: current_user) , class: 'btn btn-sm btn-primary'%>
+             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
