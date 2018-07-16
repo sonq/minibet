@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713112433) do
+ActiveRecord::Schema.define(version: 20180716113621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180713112433) do
     t.integer "result"
     t.integer "homescore"
     t.integer "awayscore"
+    t.index ["fixture_id", "user_id"], name: "index_bets_on_fixture_id_and_user_id", unique: true
   end
 
   create_table "fixtures", force: :cascade do |t|
