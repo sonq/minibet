@@ -13,8 +13,9 @@
 
 
 <div class = 'center'>
-  <%= will_paginate @user_bets %>
- 
+
+   <%= will_paginate @user_bets %>
+
   <br/>
   <kbd>Current Time: <%= Time.now.strftime("%Y-%d-%m %H:%M:%S")  %></kbd>
 </div>
@@ -51,13 +52,8 @@
     <td><%= fixture.awayscore %> </td>
 
     <td>
-        <% if fixture.due > Time.now %>
-        <p class="text-primary">
-        <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
-        <% else %>
-        <p class="text-danger">
-        <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
-        <% end %>
+        <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> 
+
         </td> 
         <td> 
         </td>
