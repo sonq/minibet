@@ -49,7 +49,7 @@
 
      </td>
     <td>
-        <% if  current_user.adminflag?     %> 
+        <% if  (current_user == bet.user && bet.fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S")) || current_user.username =='Soner'     %> 
         <%= link_to 'Update', edit_bet_path(bet), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>

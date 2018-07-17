@@ -4,6 +4,7 @@
 
 <div class = "col-sm-offset-0 col-sm-8">
    <h1> Fixture </h1> 
+
 <br/><br/>
 <% if current_user.adminflag? %> 
 <%= link_to "Add Match",new_fixture_path, class: "btn btn-primary"%> 
@@ -50,7 +51,7 @@
     <td><%= fixture.awayscore %> </td>
 
     <td>
-        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") %>
+        <% if fixture.due > Time.now %>
         <p class="text-primary">
         <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> </p>
         <% else %>
@@ -62,7 +63,7 @@
         </td>
 
     <td>
-        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") &&  
+        <% if fixture.due > Time.now &&  
             (fixture.bets.where(:user_id => user).count) == 0 %>
              <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
@@ -73,7 +74,7 @@
      </td>
 
     <td>
-        <% if fixture.due.strftime("%Y-%d-%m %H:%M:%S")> Time.now.strftime("%Y-%d-%m %H:%M:%S") &&  
+        <% if fixture.due> Time.now &&  
             (fixture.bets.where(:user_id => user).count) == 0 %>
              <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>

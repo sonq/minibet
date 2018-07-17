@@ -1,7 +1,7 @@
 class FixturesController < ApplicationController
 
   before_action :require_user
-    before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
 
   def new

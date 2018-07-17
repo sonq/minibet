@@ -3,7 +3,7 @@ class BetsController < ApplicationController
 
 
   before_action :require_user
-  before_action :require_same_user, only: [:edit, :update]
+  #before_action :require_same_user, only: [:edit, :update]
 
 
   def new
@@ -55,6 +55,7 @@ class BetsController < ApplicationController
 
 
   def update
+
       @bet = Bet.find(params[:id])
       if @bet.update(bet_params)
         flash[:success] = "Bet is sucessfully updated."
@@ -90,17 +91,16 @@ class BetsController < ApplicationController
 
 
     def bet_params
-      params.require(:bet).permit(:bettype,:homescore,:awayscore,:result, :fixture_id)
+      params.require(:bet).permit(:bettype,:homescore,:awayscore,:result, :fixture_id, :user_id)
     end 
 
 
-
-
-
   def require_same_user 
-    if  !current_user.adminflag?
+    if  
+        !current_user.adminflag? 
         flash[:danger] = "Cakaaaaaalllll"
-        redirect_to fixtures_path
+        redirect_to bets_path
+    
     end
   end
 
