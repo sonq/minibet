@@ -40,7 +40,7 @@ class FixturesController < ApplicationController
 
 
   def index
-    @fixtures = Fixture.order('due DESC').paginate(page: params[:page], per_page: 20)
+    @fixtures = Fixture.order('due ASC').paginate(page: params[:page], per_page: 9)
   end
 
 
