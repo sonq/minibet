@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716113621) do
+ActiveRecord::Schema.define(version: 20180823061410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,11 +79,18 @@ ActiveRecord::Schema.define(version: 20180716113621) do
              FROM ((bets
                JOIN users ON ((users.id = bets.user_id)))
                JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
+          ), cte2 AS (
+           SELECT cte.betuser,
+                  CASE
+                      WHEN ((cte.betuser)::text = ANY ((ARRAY['n.ceceli'::character varying, 'yasin'::character varying, 'MKirazci'::character varying])::text[])) THEN (sum(cte.points) + 6)
+                      ELSE sum(cte.points)
+                  END AS sum
+             FROM cte
+            GROUP BY cte.betuser
           )
-   SELECT cte.betuser,
-      sum(cte.points) AS sum
-     FROM cte
-    GROUP BY cte.betuser;
+   SELECT cte2.betuser,
+      cte2.sum
+     FROM cte2;
   SQL
 
 end
