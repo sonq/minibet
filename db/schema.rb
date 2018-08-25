@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180825145841) do
+ActiveRecord::Schema.define(version: 20180825153317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,7 +104,9 @@ ActiveRecord::Schema.define(version: 20180825145841) do
      FROM ((bets
        JOIN users ON ((bets.user_id = users.id)))
        JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
-    WHERE (fixtures.due < ("left"(((CURRENT_TIMESTAMP)::character varying)::text, 19))::timestamp without time zone);
+    WHERE (fixtures.due < ("left"(((CURRENT_TIMESTAMP)::character varying)::text, 19))::timestamp without time zone)
+    ORDER BY fixtures.due DESC
+   LIMIT 82;
   SQL
 
 end
