@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :bets
     resources :tabelas
+    resources :otherbets
 
     get 'signup', to: 'users#new'
     resources :users, except: [:new]

@@ -1,0 +1,74 @@
+
+<div class= "container-fluid">
+<h1> Other Bets </h1> </div>
+</div>
+
+
+<div class = "col-sm-offset-0 col-sm-12">
+
+<table class="table table-striped">
+
+  <tr>
+
+    <th> User Name </th>
+    <th> Match </th>
+
+    <th>Bet Type  </th>
+  
+    <th> Result </th>    
+    <th> Home Score </th>
+  
+    <th> Away Score </th>    
+    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>    <th>  </th>
+  
+    <th>  </th>    
+    <th>  </th>
+  
+    <th>  </th>
+  </tr>
+
+
+  <% @otherbets.each do |otherbet| %>
+  <tr>
+
+    <td><%= otherbet.username %> </td>
+
+    <td><%= otherbet.description %> </td>
+    <td> <%= otherbet.bettype %></td>    
+    <td><%= otherbet.result %> </td>
+    <td> <%= otherbet.homescore %></td>
+    <td><%= otherbet.awayscore %> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>    
+    <td> </td>
+    <td> </td>
+
+
+
+
+
+  </tr>
+  <% end %>
+
+
+</table>
+
+</div>
+

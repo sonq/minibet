@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180823061410) do
+ActiveRecord::Schema.define(version: 20180825145841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,20 @@ ActiveRecord::Schema.define(version: 20180823061410) do
    SELECT cte2.betuser,
       cte2.sum
      FROM cte2;
+  SQL
+
+  create_view "otherbets",  sql_definition: <<-SQL
+      SELECT users.username,
+      fixtures.description,
+      bets.bettype,
+      bets.result,
+      bets.homescore,
+      bets.awayscore,
+      fixtures.due
+     FROM ((bets
+       JOIN users ON ((bets.user_id = users.id)))
+       JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
+    WHERE (fixtures.due < ("left"(((CURRENT_TIMESTAMP)::character varying)::text, 19))::timestamp without time zone);
   SQL
 
 end
