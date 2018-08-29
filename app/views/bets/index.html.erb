@@ -50,7 +50,7 @@
     <td>
    </td>
     <td>
-        <% if  ((current_user.id == bet.user.id || current_user.username == 'Soner') and  bet.fixture.due > Time.now.utc+3.hours)      %> 
+        <% if  ((current_user.id == bet.user.id || current_user.username == 'Soner') and  bet.fixture.due > Time.now.utc+3.hours || current_user.username == 'Soner')      %> 
         <%= link_to 'Update', edit_bet_path(bet), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>
