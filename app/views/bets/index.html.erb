@@ -30,7 +30,7 @@
   </tr>
 
     <% @bets.each do |bet| %>
-    <% if current_user.id == bet.user_id || current_user.username == 'Soner'  %>
+    <% if current_user.id == bet.user_id || current_user.username == 'Admin'  %>
     <tr>
     
     <td><%= bet.fixture.description %> </td>
@@ -48,13 +48,13 @@
     <td>
    </td>
     <td>
-        <% if  ((current_user.id == bet.user.id || current_user.username == 'Soner') and  bet.fixture.due > Time.now.utc+3.hours || current_user.username == 'Soner')      %> 
+        <% if  ((current_user.id == bet.user.id || current_user.username == 'Admin') and  bet.fixture.due > Time.now.utc+3.hours || current_user.username == 'Admin')      %> 
         <%= link_to 'Update', edit_bet_path(bet), class: 'btn btn-sm btn-primary' %>
         <%else%>
         <%end%> </td>
         
     <td>
-        <td><% if  ((current_user.id == bet.user.id || current_user.username == 'Soner') and  bet.fixture.due > Time.now.utc+3.hours)     %>  
+        <td><% if  ((current_user.id == bet.user.id || current_user.username == 'Admin') and  bet.fixture.due > Time.now.utc+3.hours)     %>  
         <%= link_to 'Delete', bet_path(bet), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
         <%else%>
         <%end%>
