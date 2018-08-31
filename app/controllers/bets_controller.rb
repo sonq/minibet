@@ -16,7 +16,7 @@ class BetsController < ApplicationController
 
   def index
 
-    @bets = Bet.order('id DESC').paginate(page: params[:page], per_page: 20)
+    @bets = Bet.order('id DESC')
 
   end
 
