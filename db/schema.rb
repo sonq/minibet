@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901131126) do
+ActiveRecord::Schema.define(version: 20180901131717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,7 +104,8 @@ ActiveRecord::Schema.define(version: 20180901131126) do
              FROM cte
             GROUP BY cte.betuser
           )
-   SELECT cte2.betuser,
+   SELECT row_number() OVER (ORDER BY cte2.sum DESC) AS rowno,
+      cte2.betuser,
       cte2.sum
      FROM cte2;
   SQL

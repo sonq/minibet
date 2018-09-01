@@ -9,9 +9,10 @@
 <table class="table table-striped">
 
   <tr>
- 
+    <th> </th>
     <th> User Name </th>
     <th> Total Point </th>
+
  
 
 
@@ -20,6 +21,7 @@
 
   <% @tabelas.each do |tabela| %>
   <tr>
+      <td><%= tabela.rowno %> </td>
 <td>  <%= tabela.betuser %>  </td>  
 
 
