@@ -4,60 +4,29 @@
 </div>
 
 
-<div class = "col-sm-offset-0 col-sm-12">
+<div class = "col-sm-offset-0 col-sm-6">
 
 <table class="table table-striped">
 
   <tr>
-
+    <th> </th>
     <th> User Name </th>
     <th> Total Point </th>
+    <th> Winning Percentage </th>
 
-    <th>  </th>
-  
-    <th>  </th>    
-    <th>  </th>
-  
-    <th>  </th>    <th>  </th>
-  
-    <th>  </th>    
-    <th>  </th>
-  
-    <th>  </th>    <th>  </th>
-  
-    <th>  </th>    
-    <th>  </th>
-  
-    <th>  </th>    <th>  </th>
-  
-    <th>  </th>    
-    <th>  </th>
-  
-    <th>  </th>
+
   </tr>
 
 
   <% @tabelas.each do |tabela| %>
   <tr>
+<td><%= tabela.row_number %></td> <td>  <%= tabela.betuser %>  </td>  
 
-    <td><%= tabela.betuser %> </td>
 
     <td><%= tabela.sum %> </td>
-    <td> </td>    
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>    
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>    
-    <td> </td>
-    <td> </td>
-    <td> </td>
-    <td> </td>    
-    <td> </td>
-    <td> </td>
+    <td><%= tabela.pct %> </td> 
+
+    
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180825153317) do
+ActiveRecord::Schema.define(version: 20180901125326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,40 +59,6 @@ ActiveRecord::Schema.define(version: 20180825153317) do
   end
 
 
-  create_view "tabelas",  sql_definition: <<-SQL
-      WITH cte(usercode, betuser, matchname, bettype, bettedresult, bettedhomesocre, bettedawayscore, matchresult, homescore, awayscore, points) AS (
-           SELECT users.id AS usercode,
-              users.username AS betuser,
-              fixtures.description AS matchname,
-              bets.bettype,
-              bets.result AS bettedresult,
-              bets.homescore AS bettedhomesocre,
-              bets.awayscore AS bettedawayscore,
-              fixtures.result AS matchresult,
-              fixtures.homescore,
-              fixtures.awayscore,
-                  CASE
-                      WHEN (((bets.bettype)::text = 'Score'::text) AND ((bets.bettype)::text <> 'Result'::text) AND (bets.homescore = fixtures.homescore) AND (bets.awayscore = fixtures.awayscore)) THEN 5
-                      WHEN (((bets.bettype)::text = 'Result'::text) AND ((bets.bettype)::text <> 'Score'::text) AND (bets.result = fixtures.result)) THEN 2
-                      ELSE 0
-                  END AS points
-             FROM ((bets
-               JOIN users ON ((users.id = bets.user_id)))
-               JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
-          ), cte2 AS (
-           SELECT cte.betuser,
-                  CASE
-                      WHEN ((cte.betuser)::text = ANY ((ARRAY['n.ceceli'::character varying, 'yasin'::character varying, 'MKirazci'::character varying])::text[])) THEN (sum(cte.points) + 6)
-                      ELSE sum(cte.points)
-                  END AS sum
-             FROM cte
-            GROUP BY cte.betuser
-          )
-   SELECT cte2.betuser,
-      cte2.sum
-     FROM cte2;
-  SQL
-
   create_view "otherbets",  sql_definition: <<-SQL
       SELECT users.username,
       fixtures.description,
@@ -107,6 +73,51 @@ ActiveRecord::Schema.define(version: 20180825153317) do
     WHERE (fixtures.due < ("left"(((CURRENT_TIMESTAMP)::character varying)::text, 19))::timestamp without time zone)
     ORDER BY fixtures.due DESC
    LIMIT 82;
+  SQL
+
+  create_view "tabelas",  sql_definition: <<-SQL
+      WITH cte(usercode, betuser, matchname, bettype, bettedresult, bettedhomesocre, bettedawayscore, matchresult, homescore, awayscore, points, numofbets) AS (
+           SELECT users.id AS usercode,
+              users.username AS betuser,
+              fixtures.description AS matchname,
+              bets.bettype,
+              bets.result AS bettedresult,
+              bets.homescore AS bettedhomesocre,
+              bets.awayscore AS bettedawayscore,
+              fixtures.result AS matchresult,
+              fixtures.homescore,
+              fixtures.awayscore,
+                  CASE
+                      WHEN (((bets.bettype)::text = 'Score'::text) AND ((bets.bettype)::text <> 'Result'::text) AND (bets.homescore = fixtures.homescore) AND (bets.awayscore = fixtures.awayscore)) THEN 5
+                      WHEN (((bets.bettype)::text = 'Result'::text) AND ((bets.bettype)::text <> 'Score'::text) AND (bets.result = fixtures.result)) THEN 2
+                      ELSE 0
+                  END AS points,
+              ( SELECT count(1) AS count
+                     FROM bets bets_1
+                    WHERE (users.id = bets_1.user_id)) AS numofbets,
+              ( SELECT count(1) AS count
+                     FROM bets bets_1
+                    WHERE ((users.id = bets_1.user_id) AND ((bets_1.result = fixtures.result) OR (bets_1.homescore = fixtures.homescore)))) AS numofsucbets
+             FROM ((bets
+               JOIN users ON ((users.id = bets.user_id)))
+               JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
+          ), cte2 AS (
+           SELECT cte.betuser,
+                  CASE
+                      WHEN ((cte.betuser)::text = ANY ((ARRAY['n.ceceli'::character varying, 'yasin'::character varying, 'MKirazci'::character varying])::text[])) THEN (sum(cte.points) + 6)
+                      ELSE sum(cte.points)
+                  END AS sum,
+              cte.numofbets,
+              cte.numofsucbets
+             FROM cte
+            GROUP BY cte.betuser, cte.numofbets, cte.numofsucbets
+          )
+   SELECT row_number() OVER (ORDER BY cte2.sum DESC) AS row_number,
+      cte2.betuser,
+      cte2.sum,
+      concat(((((cte2.numofsucbets)::numeric / (cte2.numofbets)::numeric) * (100)::numeric))::integer, '%') AS pct
+     FROM cte2
+    ORDER BY cte2.sum DESC;
   SQL
 
 end
