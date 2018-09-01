@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901131717) do
+ActiveRecord::Schema.define(version: 20180901135058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +106,15 @@ ActiveRecord::Schema.define(version: 20180901131717) do
           )
    SELECT row_number() OVER (ORDER BY cte2.sum DESC) AS rowno,
       cte2.betuser,
-      cte2.sum
+      cte2.sum,
+      concat((((( SELECT (count(1))::numeric AS count
+             FROM ((bets
+               JOIN users ON ((bets.user_id = users.id)))
+               JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
+            WHERE (((cte2.betuser)::text = (users.username)::text) AND ((fixtures.result = bets.result) OR ((fixtures.homescore = bets.homescore) AND (fixtures.awayscore = bets.awayscore))))) / ( SELECT (count(1))::numeric AS count
+             FROM (bets
+               JOIN users ON ((bets.user_id = users.id)))
+            WHERE ((cte2.betuser)::text = (users.username)::text))) * (100)::numeric))::integer, '%') AS pct
      FROM cte2;
   SQL
 
