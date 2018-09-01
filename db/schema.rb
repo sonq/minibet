@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901125326) do
+ActiveRecord::Schema.define(version: 20180901130342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,8 +112,7 @@ ActiveRecord::Schema.define(version: 20180901125326) do
              FROM cte
             GROUP BY cte.betuser, cte.numofbets, cte.numofsucbets
           )
-   SELECT row_number() OVER (ORDER BY cte2.sum DESC) AS row_number,
-      cte2.betuser,
+   SELECT cte2.betuser,
       cte2.sum,
       concat(((((cte2.numofsucbets)::numeric / (cte2.numofbets)::numeric) * (100)::numeric))::integer, '%') AS pct
      FROM cte2
