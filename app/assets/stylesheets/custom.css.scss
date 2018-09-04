@@ -201,6 +201,11 @@ footer {
   color:#777;
 }
 
+.table-hover tbody tr:hover td {
+  background-color: #428bca;
+
+}
+
 footer a:hover {
   color: #222;
 }

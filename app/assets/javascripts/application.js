@@ -23,4 +23,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 //= require turbolinks
 //= require ace-rails-ap
+//= require Chart.bundle
+
+//= require chartkick
 //= require_tree .
