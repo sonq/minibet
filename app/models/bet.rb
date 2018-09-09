@@ -9,7 +9,8 @@ class Bet < ActiveRecord::Base
 
 
 def self.search(search)
-  where("week = ? ", "#{search}") 
+  #where("week = ? ", "#{search}") 
+  where("id IN (SELECT bets.id FROM bets join fixtures on fixtures.id = bets.fixture_id WHERE fixtures.week = ?) ", "#{search}") 
 end
 
 end

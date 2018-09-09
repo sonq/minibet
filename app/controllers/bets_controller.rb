@@ -22,7 +22,7 @@ class BetsController < ApplicationController
     if params[:search]
     @bets = Bet.search(params[:search]).order("created_at DESC")
     else
-    @bets = Bet.first(40)
+    @bets = Bet.first(0)
     end
 
    # @bets = Bet.where(["user_id  = current_user_id"])
