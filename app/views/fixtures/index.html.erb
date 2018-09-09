@@ -34,7 +34,7 @@
     <th>Home Score</th>
     <th>Away Score</th>
     <th>Due Date</th>
-    <th> </th>
+    <th>Week</th>
     <th> </th>      <th> </th>
     <th> </th>   <th> </th>
     
@@ -56,7 +56,7 @@
         <%= fixture.due.strftime("%Y-%d-%m %H:%M")%> 
 
         </td> 
-        <td> 
+        <td> <%= fixture.week %>
         </td>
 
     <td>
