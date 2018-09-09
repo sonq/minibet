@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901135058) do
+ActiveRecord::Schema.define(version: 20180908135714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180901135058) do
     t.integer "result"
     t.integer "homescore"
     t.integer "awayscore"
+    t.string "week"
     t.index ["fixture_id", "user_id"], name: "index_bets_on_fixture_id_and_user_id", unique: true
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180901135058) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.integer "week"
   end
 
   create_table "leaderboards", force: :cascade do |t|

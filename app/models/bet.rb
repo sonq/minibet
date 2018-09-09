@@ -8,6 +8,8 @@ class Bet < ActiveRecord::Base
    validates_uniqueness_of :user_id, :scope => :fixture_id
 
 
-
+def self.search(search)
+  where("week = ? ", "#{search}") 
+end
 
 end

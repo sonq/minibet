@@ -16,7 +16,20 @@ class BetsController < ApplicationController
 
   def index
 
-    @bets = Bet.order('id DESC')
+    #@bets = Bet.where(current_user.id == params[:user_id])
+
+
+    if params[:search]
+    @bets = Bet.search(params[:search]).order("created_at DESC")
+    else
+    @bets = Bet.first(40)
+    end
+
+   # @bets = Bet.where(["user_id  = current_user_id"])
+
+
+
+          #@bets = Bet.where(current_user.id == :user_id).order('id desc').paginate(page: params[:page], per_page: 9)
 
   end
 
@@ -91,7 +104,7 @@ class BetsController < ApplicationController
 
 
     def bet_params
-      params.require(:bet).permit(:bettype,:homescore,:awayscore,:result, :fixture_id, :user_id)
+      params.require(:bet).permit(:bettype,:homescore,:awayscore,:result, :fixture_id, :user_id, :week)
     end 
 
 

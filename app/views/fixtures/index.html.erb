@@ -62,7 +62,7 @@
     <td>
         <% if fixture.due > Time.now &&  
             (fixture.bets.where(:user_id => user).count) == 0 %>
-             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
+             <%= link_to "Bet for Result", new_fixture_bet_path(fixture_id: fixture.id, week: fixture.week ,bettype: 'Result',description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>
@@ -73,7 +73,7 @@
     <td>
         <% if fixture.due> Time.now &&  
             (fixture.bets.where(:user_id => user).count) == 0 %>
-             <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, bettype: 'Score', description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
+             <%= link_to "Bet for Score", new_fixture_bet_path(fixture_id: fixture.id, week: fixture.week ,bettype: 'Score', description: fixture.description, due: fixture.due.strftime("%Y-%d-%m %H:%M")) , class: 'btn btn-sm btn-primary'%>
         <%else %>
 
         <%end%>

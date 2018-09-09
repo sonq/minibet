@@ -78,7 +78,7 @@ class FixturesController < ApplicationController
   private
   
   def fixture_params
-    params.require(:fixture).permit(:hometeam,:awayteam,:due, :homescore, :awayscore, :result,:description)
+    params.require(:fixture).permit(:hometeam,:awayteam,:due, :homescore, :awayscore, :result,:description, :week)
   end
 
 

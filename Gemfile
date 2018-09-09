@@ -9,6 +9,7 @@ end
 gem 'rails', '~> 5.1.6'
 # Use postgresql as the database for Active Record
 gem 'scenic'
+
 gem 'ace-rails-ap'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '3.1.5'
