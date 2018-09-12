@@ -62,14 +62,13 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "taqtaqbet_#{Rails.env}"
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+config.action_mailer.smtp_settings = {
+    address: "smtp.example.com",
     port: 587,
-    domain: "taqtaqbet.com"
     authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "taqtaqbet@gmail.com",
-    password: "TaqTaqBet1234" }
+    user_name: 'taqtaqbet@gmail.com',
+    password: 'TaqTaqBet1234'
+}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

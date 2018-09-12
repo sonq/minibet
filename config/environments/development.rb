@@ -29,14 +29,13 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+config.action_mailer.smtp_settings = {
+    address: "smtp.example.com",
     port: 587,
-    domain: "taqtaqbet.com"
     authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: "taqtaqbet@gmail.com",
-    password: "TaqTaqBet1234" }
+    user_name: 'taqtaqbet@gmail.com',
+    password: 'TaqTaqBet1234'
+}
 
   config.action_mailer.perform_caching = false
 
