@@ -1,2 +1,0 @@
-class ReminderMailer < ApplicationMailer
-end

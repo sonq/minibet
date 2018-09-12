@@ -69,6 +69,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+
+      #send email
+      UserMailer.signup_confirmation(@user).deliver
+
+
       #session automatically signs users in that signed up after submittin in sign up page
       session[:user_id] = @user.id
       flash[:success] = "Welcome to the TaqTaq #{@user.username}"
@@ -83,7 +88,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username,:usertype, :useradmin, :password, :adminflag)
+    params.require(:user).permit(:username,:usertype, :useradmin, :password, :adminflag, :usermail)
   end
 
   def set_user

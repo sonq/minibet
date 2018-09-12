@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180909083944) do
+ActiveRecord::Schema.define(version: 20180912110350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20180909083944) do
     t.string "usertype"
     t.string "useradmin"
     t.boolean "adminflag", default: false
+    t.string "usermail"
   end
 
 

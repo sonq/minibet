@@ -73,7 +73,7 @@
       <% end %> 
     </td>
  <td>
-    <% if current_user.username == 'Soner'  %>  
+    <% if current_user.username == 'Admin'  %>  
         <%= link_to 'Delete', user_path(user), method: :delete, data:{confirm: 'Are you sure?'}, class: 'btn btn-sm btn-danger' %>
     <% end %>
 </td>
