@@ -68,8 +68,8 @@ Rails.application.configure do
     domain: "taqtaqbet.com"
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV["taqtaqbet@gmail.com"],
-    password: ENV["TaqTaqBet1234"]
+    user_name: "taqtaqbet@gmail.com",
+    password: "TaqTaqBet1234"
 }
 
   # Ignore bad email addresses and do not raise email delivery errors.
