@@ -20,7 +20,7 @@ class BetsController < ApplicationController
 
 
     if params[:search]
-    @bets = Bet.search(params[:search]).order("created_at DESC")
+    @bets = Bet.search(params[:search]).order("fixture_id")
     else
     @bets = Bet.first(0)
     end
