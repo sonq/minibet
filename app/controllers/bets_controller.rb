@@ -59,7 +59,7 @@ class BetsController < ApplicationController
         if @bet.save 
           flash[:success] = "Bet has been created!" 
           redirect_to fixtures_path
-        else
+       else
           flash[:danger] = "Cakaaaaaalllll"
           redirect_to fixtures_path
         end
