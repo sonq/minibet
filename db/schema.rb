@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180912110350) do
+ActiveRecord::Schema.define(version: 20180914070557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,9 @@ ActiveRecord::Schema.define(version: 20180912110350) do
                JOIN users ON ((bets.user_id = users.id)))
                JOIN fixtures ON ((fixtures.id = bets.fixture_id)))
             WHERE (((cte2.betuser)::text = (users.username)::text) AND ((fixtures.result = bets.result) OR ((fixtures.homescore = bets.homescore) AND (fixtures.awayscore = bets.awayscore))))) / ( SELECT (count(1))::numeric AS count
-             FROM (bets
+             FROM ((bets
                JOIN users ON ((bets.user_id = users.id)))
+               JOIN fixtures ON (((fixtures.id = bets.fixture_id) AND (fixtures.result IS NOT NULL))))
             WHERE ((cte2.betuser)::text = (users.username)::text))) * (100)::numeric))::integer, '%') AS pct
      FROM cte2;
   SQL
